@@ -1,0 +1,1637 @@
+{
+  "DEL_BOM_2026-04-15": {
+    "saved_at": "2026-03-13T00:41:02.964151",
+    "flights": [
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1056",
+        "airplane": "Airbus A320",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 18:00",
+        "arrival": "2026-04-15 20:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 0,
+        "carbon_kg": 115.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 115 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1235",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 23:25",
+        "arrival": "2026-04-16 01:50",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 0,
+        "carbon_kg": 102.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 102 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Akasa Air",
+        "flight_no": "QP 1119",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 08:40",
+        "arrival": "2026-04-15 10:55",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 5350,
+        "carbon_kg": 89.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 88 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Akasa Air",
+        "flight_no": "QP 1110",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 10:00",
+        "arrival": "2026-04-15 12:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 5350,
+        "carbon_kg": 89.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 88 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Akasa Air",
+        "flight_no": "QP 1820",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 17:30",
+        "arrival": "2026-04-15 19:50",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 5350,
+        "carbon_kg": 87.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Carbon emissions estimate: 87 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 2169",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 IDR \u2192 BOM",
+        "departure": "2026-04-15 19:40",
+        "arrival": "2026-04-15 23:45",
+        "duration": "4h 5m",
+        "stops": 1,
+        "price_inr": 5958,
+        "carbon_kg": 110.0,
+        "layovers": "Devi Ahilyabai Holkar International Airport, Indore (1h 10m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 60 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6318",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 14:45",
+        "arrival": "2026-04-15 17:05",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 353",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 03:00",
+        "arrival": "2026-04-15 05:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 449",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 05:00",
+        "arrival": "2026-04-15 07:15",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6328",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 10:15",
+        "arrival": "2026-04-15 12:35",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6047",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 11:00",
+        "arrival": "2026-04-15 13:15",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6676",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 12:00",
+        "arrival": "2026-04-15 14:10",
+        "duration": "2h 10m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 324",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 13:00",
+        "arrival": "2026-04-15 15:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6022",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 14:00",
+        "arrival": "2026-04-15 16:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 327",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 16:15",
+        "arrival": "2026-04-15 18:40",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6114",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 22:45",
+        "arrival": "2026-04-16 01:05",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 322",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 23:30",
+        "arrival": "2026-04-16 01:45",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6255,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "SpiceJet",
+        "flight_no": "SG 476",
+        "airplane": "Boeing 737",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 16:30",
+        "arrival": "2026-04-15 18:40",
+        "duration": "2h 10m",
+        "stops": 0,
+        "price_inr": 6376,
+        "carbon_kg": 99.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (29 in)",
+          "Stream media to your device",
+          "Carbon emissions estimate: 98 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Akasa Air",
+        "flight_no": "QP 1128",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 16:00",
+        "arrival": "2026-04-15 18:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6562,
+        "carbon_kg": 89.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Carbon emissions estimate: 88 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2999",
+        "airplane": "Airbus A321",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 22:00",
+        "arrival": "2026-04-16 00:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6882,
+        "carbon_kg": 127.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (29 in)",
+          "Free Wi-Fi",
+          "In-seat power & USB outlets",
+          "On-demand video",
+          "Carbon emissions estimate: 127 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2437",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 22:30",
+        "arrival": "2026-04-16 00:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6882,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6218",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 06:05",
+        "arrival": "2026-04-15 08:20",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 320",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 08:00",
+        "arrival": "2026-04-15 10:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 675",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 08:45",
+        "arrival": "2026-04-15 11:00",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6107",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 09:30",
+        "arrival": "2026-04-15 11:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 864",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 15:30",
+        "arrival": "2026-04-15 17:45",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6706",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 17:00",
+        "arrival": "2026-04-15 19:15",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 329",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 18:00",
+        "arrival": "2026-04-15 20:15",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 354",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 19:00",
+        "arrival": "2026-04-15 21:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 303",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 20:00",
+        "arrival": "2026-04-15 22:10",
+        "duration": "2h 10m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 853",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 20:45",
+        "arrival": "2026-04-15 23:00",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 395",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 21:45",
+        "arrival": "2026-04-16 00:05",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6885,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2975",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 06:30",
+        "arrival": "2026-04-15 08:50",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2429",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 07:00",
+        "arrival": "2026-04-15 09:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2678",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 08:30",
+        "arrival": "2026-04-15 10:45",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2963",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 09:00",
+        "arrival": "2026-04-15 11:15",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2927",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 09:30",
+        "arrival": "2026-04-15 12:00",
+        "duration": "2h 30m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2995",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 10:00",
+        "arrival": "2026-04-15 12:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2425",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 10:30",
+        "arrival": "2026-04-15 12:50",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2945",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 11:00",
+        "arrival": "2026-04-15 13:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2951",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 13:30",
+        "arrival": "2026-04-15 15:50",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2441",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 14:10",
+        "arrival": "2026-04-15 16:35",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2933",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 15:30",
+        "arrival": "2026-04-15 17:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2941",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 16:30",
+        "arrival": "2026-04-15 18:50",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 441",
+        "airplane": "Boeing 777",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 17:00",
+        "arrival": "2026-04-15 19:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 117.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Above average legroom (33 in)",
+          "In-seat power & USB outlets",
+          "Stream media to your device",
+          "Carbon emissions estimate: 116 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1736",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 17:30",
+        "arrival": "2026-04-15 19:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 6934,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2433",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 21:30",
+        "arrival": "2026-04-15 23:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7055,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Akasa Air",
+        "flight_no": "QP 1826",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 19:55",
+        "arrival": "2026-04-15 22:20",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7081,
+        "carbon_kg": 84.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Carbon emissions estimate: 83 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1785",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 12:00",
+        "arrival": "2026-04-15 14:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7108,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1777",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 16:00",
+        "arrival": "2026-04-15 18:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7108,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2985",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 19:30",
+        "arrival": "2026-04-15 21:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7108,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2981",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 21:00",
+        "arrival": "2026-04-15 23:20",
+        "duration": "2h 20m",
+        "stops": 0,
+        "price_inr": 7108,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2955",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 18:00",
+        "arrival": "2026-04-15 20:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7223,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2805",
+        "airplane": "Airbus A321",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 20:00",
+        "arrival": "2026-04-15 22:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7223,
+        "carbon_kg": 127.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (29 in)",
+          "Free Wi-Fi",
+          "In-seat power & USB outlets",
+          "On-demand video",
+          "Carbon emissions estimate: 127 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2957",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 20:30",
+        "arrival": "2026-04-15 23:00",
+        "duration": "2h 30m",
+        "stops": 0,
+        "price_inr": 7223,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2439",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 23:00",
+        "arrival": "2026-04-16 01:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7223,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2943",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 07:30",
+        "arrival": "2026-04-15 09:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7281,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6814",
+        "airplane": "Airbus A321neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 07:15",
+        "arrival": "2026-04-15 09:30",
+        "duration": "2h 15m",
+        "stops": 0,
+        "price_inr": 7305,
+        "carbon_kg": 86.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 85 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2977",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 19:00",
+        "arrival": "2026-04-15 21:25",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 7869,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1745",
+        "airplane": "Airbus A320neo",
+        "route": "DEL \u2192 BOM",
+        "departure": "2026-04-15 05:30",
+        "arrival": "2026-04-15 07:55",
+        "duration": "2h 25m",
+        "stops": 0,
+        "price_inr": 9790,
+        "carbon_kg": 100.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 100 kg"
+        ]
+      }
+    ]
+  },
+  "IDR_DEL_2026-03-20": {
+    "saved_at": "2026-03-15T22:40:38.241471",
+    "flights": [
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1091",
+        "airplane": "Boeing 737MAX 8 Passenger",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 15:25",
+        "arrival": "2026-03-20 17:05",
+        "duration": "1h 40m",
+        "stops": 0,
+        "price_inr": 0,
+        "carbon_kg": 73.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 72 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1265",
+        "airplane": "Airbus A320",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 17:30",
+        "arrival": "2026-03-20 19:15",
+        "duration": "1h 45m",
+        "stops": 0,
+        "price_inr": 0,
+        "carbon_kg": 81.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 80 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1865",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 20:50",
+        "arrival": "2026-03-20 22:40",
+        "duration": "1h 50m",
+        "stops": 0,
+        "price_inr": 6119,
+        "carbon_kg": 65.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat power & USB outlets",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6577",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 22:00",
+        "arrival": "2026-03-20 23:35",
+        "duration": "1h 35m",
+        "stops": 0,
+        "price_inr": 6359,
+        "carbon_kg": 62.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 62 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1860",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 08:00",
+        "arrival": "2026-03-20 09:35",
+        "duration": "1h 35m",
+        "stops": 0,
+        "price_inr": 6471,
+        "carbon_kg": 65.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat power & USB outlets",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 2010",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 19:35",
+        "arrival": "2026-03-20 21:05",
+        "duration": "1h 30m",
+        "stops": 0,
+        "price_inr": 6569,
+        "carbon_kg": 62.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 62 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 2175",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 07:40",
+        "arrival": "2026-03-20 08:55",
+        "duration": "1h 15m",
+        "stops": 0,
+        "price_inr": 7409,
+        "carbon_kg": 62.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 62 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 6609",
+        "airplane": "Airbus A320",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 12:30",
+        "arrival": "2026-03-20 13:50",
+        "duration": "1h 20m",
+        "stops": 0,
+        "price_inr": 7409,
+        "carbon_kg": 73.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 72 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2591",
+        "airplane": "Airbus A320neo",
+        "route": "IDR \u2192 DEL",
+        "departure": "2026-03-20 09:40",
+        "arrival": "2026-03-20 11:05",
+        "duration": "1h 25m",
+        "stops": 0,
+        "price_inr": 8361,
+        "carbon_kg": 65.0,
+        "layovers": "",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat power & USB outlets",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "IndiGo",
+        "flight_no": "6E 7424",
+        "airplane": "ATR 72",
+        "route": "IDR \u2192 UDR \u2192 DEL",
+        "departure": "2026-03-20 13:30",
+        "arrival": "2026-03-20 18:20",
+        "duration": "4h 50m",
+        "stops": 1,
+        "price_inr": 8946,
+        "carbon_kg": 86.0,
+        "layovers": "Maharana Pratap Airport Udaipur (2h 30m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "Carbon emissions estimate: 34 kg"
+        ]
+      }
+    ]
+  },
+  "BHO_IDR_2026-03-20": {
+    "saved_at": "2026-03-13T19:03:53.693012",
+    "flights": [
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1894",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 12:35",
+        "arrival": "2026-03-21 14:50",
+        "duration": "26h 15m",
+        "stops": 1,
+        "price_inr": 9201,
+        "carbon_kg": 134.0,
+        "layovers": "Indira Gandhi International Airport (23h 10m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 634",
+        "airplane": "Airbus A321",
+        "route": "BHO \u2192 BOM \u2192 IDR",
+        "departure": "2026-03-20 14:05",
+        "arrival": "2026-03-20 19:10",
+        "duration": "5h 5m",
+        "stops": 1,
+        "price_inr": 9668,
+        "carbon_kg": 148.0,
+        "layovers": "Chhatrapati Shivaji Maharaj International Airport Mumbai (2h 10m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Average legroom (31 in)",
+          "Stream media to your device",
+          "Carbon emissions estimate: 90 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1894",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 12:35",
+        "arrival": "2026-03-21 08:10",
+        "duration": "19h 35m",
+        "stops": 1,
+        "price_inr": 10119,
+        "carbon_kg": 142.0,
+        "layovers": "Indira Gandhi International Airport (16h 20m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2760",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 ATQ \u2192 BOM \u2192 IDR",
+        "departure": "2026-03-20 19:50",
+        "arrival": "2026-03-21 19:10",
+        "duration": "23h 20m",
+        "stops": 3,
+        "price_inr": 17553,
+        "carbon_kg": 349.0,
+        "layovers": "Indira Gandhi International Airport (11h 10m), Sri Guru Ram Dass Jee International Airport, Amritsar (3h 55m), Chhatrapati Shivaji Maharaj International Airport Mumbai (1h 20m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2760",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 19:50",
+        "arrival": "2026-03-21 14:50",
+        "duration": "19h 0m",
+        "stops": 1,
+        "price_inr": 18750,
+        "carbon_kg": 134.0,
+        "layovers": "Indira Gandhi International Airport (15h 55m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2760",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 19:50",
+        "arrival": "2026-03-21 07:15",
+        "duration": "11h 25m",
+        "stops": 1,
+        "price_inr": 19049,
+        "carbon_kg": 127.0,
+        "layovers": "Indira Gandhi International Airport (8h 15m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 2760",
+        "airplane": "Airbus A320neo",
+        "route": "BHO \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 19:50",
+        "arrival": "2026-03-21 08:10",
+        "duration": "12h 20m",
+        "stops": 1,
+        "price_inr": 19275,
+        "carbon_kg": 142.0,
+        "layovers": "Indira Gandhi International Airport (9h 5m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 64 kg"
+        ]
+      }
+    ]
+  },
+  "GAU_IDR_2026-03-20": {
+    "saved_at": "2026-03-14T12:06:49.469851",
+    "flights": [
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 1867",
+        "airplane": "Airbus A320neo",
+        "route": "GAU \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 17:45",
+        "arrival": "2026-03-21 07:15",
+        "duration": "13h 30m",
+        "stops": 1,
+        "price_inr": 7298,
+        "carbon_kg": 186.0,
+        "layovers": "Indira Gandhi International Airport (9h 10m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Below average legroom (28 in)",
+          "In-seat USB outlet",
+          "Stream media to your device",
+          "Carbon emissions estimate: 123 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India",
+        "flight_no": "AI 880",
+        "airplane": "Airbus A321",
+        "route": "GAU \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 09:50",
+        "arrival": "2026-03-20 16:05",
+        "duration": "6h 15m",
+        "stops": 1,
+        "price_inr": 8063,
+        "carbon_kg": 224.0,
+        "layovers": "Indira Gandhi International Airport (1h 45m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Average legroom (31 in)",
+          "Stream media to your device",
+          "Carbon emissions estimate: 161 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1124",
+        "airplane": "Boeing 737",
+        "route": "GAU \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 22:55",
+        "arrival": "2026-03-21 07:15",
+        "duration": "8h 20m",
+        "stops": 1,
+        "price_inr": 12129,
+        "carbon_kg": 190.0,
+        "layovers": "Indira Gandhi International Airport (3h 35m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 127 kg"
+        ]
+      },
+      {
+        "source": "Google Flights",
+        "airline": "Air India Express",
+        "flight_no": "IX 1036",
+        "airplane": "Boeing 737",
+        "route": "GAU \u2192 DEL \u2192 IDR",
+        "departure": "2026-03-20 13:10",
+        "arrival": "2026-03-20 20:10",
+        "duration": "7h 0m",
+        "stops": 1,
+        "price_inr": 14653,
+        "carbon_kg": 190.0,
+        "layovers": "Indira Gandhi International Airport (2h 35m)",
+        "travel_class": "Economy",
+        "extensions": [
+          "Carbon emissions estimate: 127 kg"
+        ]
+      }
+    ]
+  }
+}

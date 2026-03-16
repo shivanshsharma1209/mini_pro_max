@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Module</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>✈ Flight Search</h1>
+
+    <form action="/results">
+    From: <input type="text" name="from_place" required><br><br>
+    To: <input type="text" name="to_place" required><br><br>
+    Date: <input type="date" name="date" required><br><br>
+
+    <div class="form-group">
+        <label>Ranking Type</label>
+        <select name="ranking_type">
+            <option value="fastest">Fastest</option>
+            <option value="cheapest">Cheapest</option>
+            <option value="comfort">Most Comfortable</option>
+            <option value="balanced">Balanced</option>
+        </select>
+    </div>
+
+    <button type="submit">Search Flights</button>
+</form>
+</div>
+
+</body>
+</html>

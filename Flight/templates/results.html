@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flight Results — {{ from_place }} to {{ to_place }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    :root {
+      --bg:      #0a0e1a;
+      --surface: #111827;
+      --card:    #161d2e;
+      --border:  #1e2d45;
+      --accent:  #3b82f6;
+      --accent2: #06b6d4;
+      --green:   #10b981;
+      --yellow:  #f59e0b;
+      --red:     #ef4444;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --tag-bg:  #1e3a5f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .topbar-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .topbar-route { display: flex; align-items: center; gap: 12px; }
+    .topbar-route .city { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+    .topbar-route .arrow { color: var(--accent); font-size: 1.2rem; }
+    .topbar-route .date-badge {
+      background: var(--tag-bg);
+      color: var(--accent2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .back-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── PAGE ── */
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ── SUMMARY ── */
+    .summary-strip {
+      display: flex; align-items: center; gap: 24px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .summary-strip h1 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; }
+    .summary-strip h1 span { color: var(--accent); }
+    .pill {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; color: var(--muted);
+    }
+    .pill b { color: var(--text); }
+
+    /* ── AIRPORT BAR ── */
+    .airport-bar {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 24px;
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .ap { display: flex; flex-direction: column; gap: 2px; }
+    .ap-code { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+    .ap-name { font-size: 0.78rem; color: var(--muted); max-width: 200px; }
+    .flight-icon { flex: 1; text-align: center; font-size: 1.5rem; color: var(--accent2); }
+
+    /* ── FILTERS ── */
+    .filter-bar {
+      display: flex; gap: 10px; margin-bottom: 20px;
+      flex-wrap: wrap; align-items: center;
+    }
+    .filter-label { font-size: 0.8rem; color: var(--muted); }
+    .filter-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); padding: 7px 16px; border-radius: 20px;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent); border-color: var(--accent); color: #fff;
+    }
+
+    /* ── TABLE HEADER ── */
+    .table-header {
+      display: grid;
+      grid-template-columns: 48px 180px 1fr 120px 120px 100px 130px;
+      gap: 16px; padding: 0 24px 10px;
+      font-size: 0.72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.8px;
+    }
+
+    /* ── MAP SECTION ── */
+    .map-section {
+      display: none;
+      margin-bottom: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      animation: fadeUp 0.3s ease both;
+    }
+    .map-section.visible { display: block; }
+
+    .map-header {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    #mapTitle {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1rem; color: var(--text);
+    }
+    #mapSubtitle { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+    .map-close {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--muted); padding: 5px 14px; border-radius: 6px;
+      cursor: pointer; font-size: 0.8rem; transition: all 0.2s;
+    }
+    .map-close:hover { border-color: var(--red); color: var(--red); }
+
+    #leafletMap { height: 400px; width: 100%; z-index: 1; }
+
+    /* ── LEG CARDS ── */
+    .leg-cards {
+      display: flex; gap: 10px; padding: 16px 20px;
+      flex-wrap: wrap; border-top: 1px solid var(--border);
+    }
+    .leg-card {
+      flex: 1; min-width: 160px; background: var(--surface);
+      border-radius: 8px; padding: 10px 14px;
+      border-left: 3px solid var(--accent);
+    }
+    .leg-card .leg-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; }
+    .leg-card .leg-route { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; }
+    .leg-card .leg-time  { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── FLIGHT CARDS ── */
+    .flights-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .flight-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 48px 180px 1fr 120px 120px 100px 130px;
+      align-items: center; gap: 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+      animation: fadeUp 0.3s ease both;
+    }
+    .flight-card:hover    { border-color: var(--accent); transform: translateY(-2px); }
+    .flight-card.selected { border-color: var(--accent2) !important; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    {% for i in range(1, 61) %}
+    .flight-card:nth-child({{ i }}) { animation-delay: {{ (i-1) * 0.03 }}s; }
+    {% endfor %}
+
+    .rank-badge {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--tag-bg); color: var(--accent);
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .airline-col .airline-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.92rem; }
+    .airline-col .flight-no   { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .airline-col .airplane    { font-size: 0.7rem;  color: var(--muted); margin-top: 1px; }
+
+    .route-col { display: flex; align-items: center; gap: 10px; }
+    .route-col .iata { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+    .route-col .route-line { flex: 1; height: 1px; background: var(--border); position: relative; }
+    .route-col .route-line::after {
+      content: "✈"; position: absolute; top: -9px; left: 50%;
+      transform: translateX(-50%); font-size: 0.8rem; color: var(--accent2);
+    }
+
+    .time-col { text-align: center; }
+    .time-col .time  { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; }
+    .time-col .label { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+
+    .dur-col { text-align: center; }
+    .dur-col .duration { font-size: 0.88rem; font-weight: 500; }
+    .stops-tag {
+      display: inline-block; margin-top: 4px;
+      padding: 2px 8px; border-radius: 10px;
+      font-size: 0.7rem; font-weight: 500;
+    }
+    .stops-tag.nonstop { background: #052e16; color: var(--green); }
+    .stops-tag.hasstop { background: #451a03; color: var(--yellow); }
+
+    .price-col { text-align: right; }
+    .price-col .price      { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--green); }
+    .price-col .price-check { font-size: 0.78rem; color: var(--yellow); }
+    .price-col .price-note  { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── LEAFLET OVERRIDES ── */
+    .duration-label {
+      background: #0a0e1a;
+      border: 1px solid #3b82f6;
+      color: #3b82f6;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 500;
+      padding: 3px 10px; border-radius: 4px;
+      white-space: nowrap; width: max-content; display: inline-block;
+    }
+    .airport-label {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 12px; color: #e2e8f0;
+      background: #0a0e1a; border-radius: 4px;
+      padding: 2px 8px; white-space: nowrap;
+      width: max-content; display: inline-block;
+    }
+    .leaflet-popup-content-wrapper {
+      background: #161d2e !important; border: 1px solid #1e2d45 !important;
+      color: #e2e8f0 !important; border-radius: 8px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+    }
+    .leaflet-popup-tip { background: #161d2e !important; }
+    .leaflet-popup-close-button { color: #64748b !important; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { text-align: center; padding: 80px 20px; color: var(--muted); }
+    .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+    .empty-state h2 { font-family: 'Syne', sans-serif; color: var(--text); margin-bottom: 8px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .flight-card, .table-header { grid-template-columns: 1fr; }
+      .table-header { display: none; }
+      .flight-card { gap: 8px; }
+      .topbar { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="/" class="topbar-logo">✈ TravelSmart</a>
+  <div class="topbar-route">
+    <span class="city">{{ from_place }}</span>
+    <span class="arrow">→</span>
+    <span class="city">{{ to_place }}</span>
+    <span class="date-badge">{{ date }}</span>
+  </div>
+  <a href="/" class="back-btn">← New Search</a>
+</div>
+
+<div class="page-wrap">
+
+  <!-- SUMMARY -->
+  <div class="summary-strip">
+    <h1>Found <span>{{ total }} flights</span></h1>
+    <div class="pill">Source: <b>Google Flights</b></div>
+    <div class="pill">Sorted by: <b>Price</b></div>
+  </div>
+
+  <!-- AIRPORT BAR -->
+  <div class="airport-bar">
+    <div class="ap">
+      <div class="ap-code">{{ from_airport.code }}</div>
+      <div class="ap-name">{{ from_airport.name }}</div>
+    </div>
+    <div class="flight-icon">✈</div>
+    <div class="ap">
+      <div class="ap-code">{{ to_airport.code }}</div>
+      <div class="ap-name">{{ to_airport.name }}</div>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" onclick="filterFlights('all', this)">All</button>
+    <button class="filter-btn" onclick="filterFlights('nonstop', this)">Non-stop only</button>
+    <button class="filter-btn" onclick="filterFlights('indigo', this)">IndiGo</button>
+    <button class="filter-btn" onclick="filterFlights('airindia', this)">Air India</button>
+    <button class="filter-btn" onclick="filterFlights('akasa', this)">Akasa Air</button>
+    <button class="filter-btn" onclick="filterFlights('spicejet', this)">SpiceJet</button>
+    <span class="filter-label" style="margin-left:12px">Sort:</span>
+    <button class="filter-btn" onclick="sortFlights('price')">Price ↑</button>
+    <button class="filter-btn" onclick="sortFlights('duration')">Duration ↑</button>
+    <button class="filter-btn" onclick="sortFlights('departure')">Departure ↑</button>
+  </div>
+
+  {% if flights %}
+
+  <!-- TABLE HEADER -->
+  <div class="table-header">
+    <div>#</div>
+    <div>Airline</div>
+    <div>Route</div>
+    <div>Departure</div>
+    <div>Arrival</div>
+    <div>Duration</div>
+    <div style="text-align:right">Price</div>
+  </div>
+
+  <!-- MAP SECTION — shown when a flight card is clicked -->
+  <div class="map-section" id="mapSection">
+    <div class="map-header">
+      <div>
+        <div id="mapTitle">Flight Route</div>
+        <div id="mapSubtitle"></div>
+      </div>
+      <button class="map-close" onclick="closeMap()">✕ Close</button>
+    </div>
+    <div id="leafletMap"></div>
+    <div class="leg-cards" id="legCards"></div>
+  </div>
+
+  <!-- FLIGHT CARDS -->
+  <div class="flights-list" id="flightsList">
+    {% for f in flights %}
+    <div class="flight-card"
+         onclick="showMap(this, {{ loop.index0 }})"
+         data-airline="{{ f.airline | lower }}"
+         data-stops="{{ f.stops }}"
+         data-price="{{ f.price_raw }}"
+         data-departure="{{ f.departure }}"
+         data-duration="{{ f.duration }}">
+
+      <div class="rank-badge">{{ f.rank }}</div>
+
+      <div class="airline-col">
+        <div class="airline-name">{{ f.airline }}</div>
+        <div class="flight-no">{{ f.flight_no }}</div>
+        {% if f.airplane %}<div class="airplane">{{ f.airplane }}</div>{% endif %}
+      </div>
+
+      <div class="route-col">
+        {% set parts = f.route.split(' → ') %}
+        <span class="iata">{{ parts[0] }}</span>
+        <div class="route-line"></div>
+        <span class="iata">{{ parts[-1] }}</span>
+      </div>
+
+      <div class="time-col">
+        <div class="time">{{ f.departure.split(' ')[-1] if ' ' in f.departure else f.departure }}</div>
+        <div class="label">Departure</div>
+      </div>
+
+      <div class="time-col">
+        <div class="time">{{ f.arrival.split(' ')[-1] if ' ' in f.arrival else f.arrival }}</div>
+        <div class="label">Arrival</div>
+      </div>
+
+      <div class="dur-col">
+        <div class="duration">{{ f.duration }}</div>
+        <span class="stops-tag {{ 'nonstop' if f.stops == 'Non-stop' else 'hasstop' }}">
+          {{ f.stops }}
+        </span>
+        {% if f.carbon_kg > 0 %}
+        <div style="font-size:0.68rem;color:var(--muted);margin-top:4px">{{ f.carbon_kg }}kg CO₂</div>
+        {% endif %}
+      </div>
+
+      <div class="price-col">
+        {% if f.price_raw > 0 %}
+          <div class="price">{{ f.price }}</div>
+          <div class="price-note">per person</div>
+        {% else %}
+          <div class="price-check">Check site</div>
+          <div class="price-note">price unavailable</div>
+        {% endif %}
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <div class="empty-state">
+    <div class="icon">✈️</div>
+    <h2>No flights found</h2>
+    <p>Try a different date or route. Make sure your date is in the future.</p>
+  </div>
+  {% endif %}
+
+</div><!-- /page-wrap -->
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+
+/* ── Flask data ────────────────────────────────────────── */
+const FLASK_FLIGHTS = {{ flights | tojson }};
+
+/* ── Airport coordinates ───────────────────────────────── */
+const AIRPORT_COORDS = {
+  DEL: { name:"Delhi",        lat:28.5665, lon:77.1031 },
+  BOM: { name:"Mumbai",       lat:19.0896, lon:72.8656 },
+  BLR: { name:"Bengaluru",    lat:13.1986, lon:77.7066 },
+  MAA: { name:"Chennai",      lat:12.9941, lon:80.1709 },
+  HYD: { name:"Hyderabad",    lat:17.2403, lon:78.4294 },
+  CCU: { name:"Kolkata",      lat:22.6549, lon:88.4467 },
+  AMD: { name:"Ahmedabad",    lat:23.0772, lon:72.6347 },
+  PNQ: { name:"Pune",         lat:18.5822, lon:73.9197 },
+  COK: { name:"Kochi",        lat:10.1520, lon:76.3919 },
+  GOI: { name:"Goa",          lat:15.3808, lon:73.8314 },
+  JAI: { name:"Jaipur",       lat:26.8242, lon:75.8122 },
+  LKO: { name:"Lucknow",      lat:26.7606, lon:80.8893 },
+  BHO: { name:"Bhopal",       lat:23.2875, lon:77.3374 },
+  IDR: { name:"Indore",       lat:22.7218, lon:75.8011 },
+  NAG: { name:"Nagpur",       lat:21.0922, lon:79.0472 },
+  PAT: { name:"Patna",        lat:25.5913, lon:85.0880 },
+  IXC: { name:"Chandigarh",   lat:30.6735, lon:76.7885 },
+  ATQ: { name:"Amritsar",     lat:31.7096, lon:74.7973 },
+  SXR: { name:"Srinagar",     lat:33.9871, lon:74.7742 },
+  GAU: { name:"Guwahati",     lat:26.1061, lon:91.5859 },
+  VNS: { name:"Varanasi",     lat:25.4524, lon:82.8593 },
+  TRV: { name:"Trivandrum",   lat: 8.4821, lon:76.9201 },
+  IXM: { name:"Madurai",      lat: 9.8345, lon:78.0934 },
+  VTZ: { name:"Vizag",        lat:17.7212, lon:83.2245 },
+  BBI: { name:"Bhubaneswar",  lat:20.2444, lon:85.8178 },
+  RPR: { name:"Raipur",       lat:21.1804, lon:81.7388 },
+  IXR: { name:"Ranchi",       lat:23.3143, lon:85.3217 },
+  UDR: { name:"Udaipur",      lat:24.6177, lon:73.8961 },
+  JDH: { name:"Jodhpur",      lat:26.2511, lon:73.0489 },
+  IXB: { name:"Bagdogra",     lat:26.6812, lon:88.3286 },
+  IMF: { name:"Imphal",       lat:24.7600, lon:93.8967 },
+  IXA: { name:"Agartala",     lat:23.8870, lon:91.2404 },
+  DIB: { name:"Dibrugarh",    lat:27.4839, lon:95.0169 },
+  IXL: { name:"Leh",          lat:34.1359, lon:77.5465 },
+  KUU: { name:"Kullu",        lat:31.8767, lon:77.1544 },
+  DHM: { name:"Dharamsala",   lat:32.1651, lon:76.2635 },
+};
+
+/* ── Airline colours ───────────────────────────────────── */
+const AIRLINE_COLORS = {
+  'air india express': '#f59e0b',
+  'air india':         '#10b981',
+  'indigo':            '#3b82f6',
+  'akasa':             '#ef4444',
+  'spicejet':          '#f97316',
+  'vistara':           '#a855f7',
+  'go first':          '#ec4899',
+};
+
+function getColor(airline) {
+  const a = (airline || '').toLowerCase();
+  for (const key in AIRLINE_COLORS) {
+    if (a.includes(key)) return AIRLINE_COLORS[key];
+  }
+  return '#06b6d4';
+}
+
+/* ── State ─────────────────────────────────────────────── */
+let leafletMap   = null;
+let selectedCard = null;
+
+/* ── Filter ────────────────────────────────────────────── */
+function filterFlights(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.flight-card').forEach(card => {
+    const airline = card.dataset.airline;
+    const stops   = card.dataset.stops;
+    let show = true;
+    if (type === 'nonstop')  show = stops === 'Non-stop';
+    if (type === 'indigo')   show = airline.includes('indigo');
+    if (type === 'airindia') show = airline.includes('air india');
+    if (type === 'akasa')    show = airline.includes('akasa');
+    if (type === 'spicejet') show = airline.includes('spicejet');
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+/* ── Sort ──────────────────────────────────────────────── */
+function sortFlights(by) {
+  const list  = document.getElementById('flightsList');
+  const cards = [...list.querySelectorAll('.flight-card')];
+  cards.sort((a, b) => {
+    if (by === 'price')     return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+    if (by === 'departure') return a.dataset.departure.localeCompare(b.dataset.departure);
+    if (by === 'duration')  return a.dataset.duration.localeCompare(b.dataset.duration);
+    return 0;
+  });
+  cards.forEach(c => list.appendChild(c));
+}
+
+/* ── Arc builder ───────────────────────────────────────── */
+function buildArc(lat1, lon1, lat2, lon2, steps) {
+  const pts = [];
+  for (let i = 0; i <= steps; i++) {
+    const t     = i / steps;
+    const lat   = lat1 + (lat2 - lat1) * t;
+    const lon   = lon1 + (lon2 - lon1) * t;
+    const curve = Math.sin(Math.PI * t) * 1.8;
+    pts.push([lat + curve, lon]);
+  }
+  return pts;
+}
+
+/* ── Arrowhead ─────────────────────────────────────────── */
+function addArrow(lat1, lon1, lat2, lon2, color) {
+  const angle = Math.atan2(lon2 - lon1, lat2 - lat1) * (180 / Math.PI);
+  L.marker([lat2, lon2], {
+    icon: L.divIcon({
+      className: '',
+      html: `<div style="
+        width:0;height:0;
+        border-left:5px solid transparent;
+        border-right:5px solid transparent;
+        border-bottom:11px solid ${color};
+        transform:rotate(${angle}deg);
+        transform-origin:center bottom;
+        opacity:0.95;
+      "></div>`,
+      iconAnchor: [5, 6],
+    }),
+    interactive: false,
+  }).addTo(leafletMap);
+}
+
+/* ── showMap — called when a flight card is clicked ─────── */
+function showMap(cardEl, idx) {
+  /* Highlight selected card */
+  if (selectedCard) selectedCard.classList.remove('selected');
+  cardEl.classList.add('selected');
+  selectedCard = cardEl;
+
+  const f          = FLASK_FLIGHTS[idx];
+  const color      = getColor(f.airline);
+  const routeParts = f.route.split(' → ');
+
+  /* Update map header */
+  document.getElementById('mapTitle').textContent =
+    f.airline + '  ·  ' + f.flight_no + '  ·  ' + f.duration;
+  document.getElementById('mapSubtitle').textContent =
+    routeParts.join(' → ') +
+    (f.stops !== 'Non-stop'
+      ? '  (via ' + routeParts.slice(1, -1).join(', ') + ')'
+      : '  ·  Non-stop');
+
+  /* Show section before Leaflet init so it can measure height */
+  const section = document.getElementById('mapSection');
+  section.classList.add('visible');
+
+  /* Destroy previous map instance */
+  if (leafletMap !== null) { leafletMap.remove(); leafletMap = null; }
+
+  /* Init Leaflet with dark CartoDB tiles */
+  leafletMap = L.map('leafletMap', {
+    zoomControl: true, scrollWheelZoom: false, attributionControl: true,
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 19,
+  }).addTo(leafletMap);
+
+  const bounds = [];
+
+  /* Draw each leg */
+  for (let i = 0; i < routeParts.length - 1; i++) {
+    const ap1 = AIRPORT_COORDS[routeParts[i]];
+    const ap2 = AIRPORT_COORDS[routeParts[i + 1]];
+    if (!ap1 || !ap2) continue;
+
+    bounds.push([ap1.lat, ap1.lon], [ap2.lat, ap2.lon]);
+
+    const arc = buildArc(ap1.lat, ap1.lon, ap2.lat, ap2.lon, 60);
+    L.polyline(arc, { color, weight: 3, opacity: 0.9, dashArray: '8, 5' }).addTo(leafletMap);
+    addArrow(ap1.lat, ap1.lon, ap2.lat, ap2.lon, color);
+
+    /* Duration label at arc midpoint */
+    const mid = arc[Math.floor(arc.length / 2)];
+    L.marker(mid, {
+      icon: L.divIcon({
+        className: '',
+        html: `<div class="duration-label" style="border-color:${color};color:${color};">✈ ${f.duration}</div>`,
+        iconAnchor: [0, 0],
+      }),
+      interactive: false,
+      zIndexOffset: 500,
+    }).addTo(leafletMap);
+  }
+
+  /* Airport markers + labels */
+  routeParts.forEach((code, i) => {
+    const ap     = AIRPORT_COORDS[code];
+    if (!ap) return;
+    const isStop = i > 0 && i < routeParts.length - 1;
+
+    const dot = L.circleMarker([ap.lat, ap.lon], {
+      radius: isStop ? 7 : 10, fillColor: color,
+      color: '#0a0e1a', weight: 3, fillOpacity: 1,
+    }).addTo(leafletMap);
+
+    const timeInfo = isStop ? 'Layover stop'
+      : i === 0 ? 'Departs: ' + f.departure : 'Arrives: ' + f.arrival;
+
+    dot.bindPopup(`
+      <div style="font-family:'DM Sans',sans-serif;min-width:140px;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:${color};">${code}</div>
+        <div style="font-size:0.82rem;margin-top:2px;color:#94a3b8;">${ap.name} Airport</div>
+        <div style="margin-top:6px;font-size:0.8rem;color:#e2e8f0;">${timeInfo}</div>
+        ${isStop ? `<div style="margin-top:6px;display:inline-block;background:rgba(245,158,11,0.15);padding:2px 8px;border-radius:4px;font-size:0.72rem;color:#f59e0b;">Layover</div>` : ''}
+      </div>
+    `);
+
+    /* IATA label above dot */
+    L.marker([ap.lat, ap.lon], {
+      icon: L.divIcon({
+        className: '',
+        html: `<div class="airport-label" style="border:1px solid ${color};">${code}</div>`,
+        iconAnchor: [0, 32],
+      }),
+      interactive: false,
+      zIndexOffset: 1000,
+    }).addTo(leafletMap);
+  });
+
+  /* Fit bounds */
+  if (bounds.length) leafletMap.fitBounds(bounds, { padding: [55, 55] });
+
+  /* Leg info cards */
+  document.getElementById('legCards').innerHTML =
+    routeParts.slice(0, -1).map((from, i) => {
+      const to     = routeParts[i + 1];
+      const depStr = i === 0 ? f.departure : '—';
+      const arrStr = i === routeParts.length - 2 ? f.arrival : '—';
+      return `
+        <div class="leg-card" style="border-left-color:${color}">
+          <div class="leg-label">Leg ${i + 1}  ·  ${f.duration}</div>
+          <div class="leg-route">${from} → ${to}</div>
+          <div class="leg-time">${depStr} → ${arrStr}</div>
+        </div>`;
+    }).join('') +
+    `<div class="leg-card" style="border-left-color:${color};text-align:right;">
+      <div class="leg-label">${f.airline}  ·  ${f.flight_no}</div>
+      <div class="leg-route" style="color:${color};">${f.price}</div>
+      <div class="leg-time">${f.stops}</div>
+    </div>`;
+
+  /* Scroll into view */
+  section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ── Close map ─────────────────────────────────────────── */
+function closeMap() {
+  document.getElementById('mapSection').classList.remove('visible');
+  if (selectedCard) { selectedCard.classList.remove('selected'); selectedCard = null; }
+  if (leafletMap)   { leafletMap.remove(); leafletMap = null; }
+}
+
+</script>
+</body>
+</html>
