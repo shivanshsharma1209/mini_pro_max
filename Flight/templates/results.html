@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Flight Results — {{ from_place }} to {{ to_place }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -17,260 +17,374 @@
       --green:   #10b981;
       --yellow:  #f59e0b;
       --red:     #ef4444;
+      --purple:  #a855f7;
       --text:    #e2e8f0;
       --muted:   #64748b;
       --tag-bg:  #1e3a5f;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; }
 
     /* ── TOPBAR ── */
     .topbar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      background:var(--surface); border-bottom:1px solid var(--border);
+      padding:16px 32px; display:flex; align-items:center;
+      justify-content:space-between; position:sticky; top:0; z-index:200;
     }
-    .topbar-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .topbar-route { display: flex; align-items: center; gap: 12px; }
-    .topbar-route .city { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
-    .topbar-route .arrow { color: var(--accent); font-size: 1.2rem; }
-    .topbar-route .date-badge {
-      background: var(--tag-bg);
-      color: var(--accent2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-    .back-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .topbar-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:var(--accent); text-decoration:none; }
+    .topbar-route { display:flex; align-items:center; gap:12px; }
+    .topbar-route .city { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; }
+    .topbar-route .arrow { color:var(--accent); font-size:1.2rem; }
+    .topbar-route .date-badge { background:var(--tag-bg); color:var(--accent2); padding:4px 12px; border-radius:20px; font-size:0.8rem; font-weight:500; }
+    .back-btn { background:transparent; border:1px solid var(--border); color:var(--muted); padding:8px 16px; border-radius:8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.85rem; text-decoration:none; transition:all 0.2s; }
+    .back-btn:hover { border-color:var(--accent); color:var(--accent); }
 
     /* ── PAGE ── */
-    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    .page-wrap { max-width:1100px; margin:0 auto; padding:32px 24px; }
 
     /* ── SUMMARY ── */
-    .summary-strip {
-      display: flex; align-items: center; gap: 24px;
-      margin-bottom: 28px; flex-wrap: wrap;
-    }
-    .summary-strip h1 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; }
-    .summary-strip h1 span { color: var(--accent); }
-    .pill {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; color: var(--muted);
-    }
-    .pill b { color: var(--text); }
+    .summary-strip { display:flex; align-items:center; gap:24px; margin-bottom:28px; flex-wrap:wrap; }
+    .summary-strip h1 { font-family:'Syne',sans-serif; font-weight:700; font-size:1.5rem; }
+    .summary-strip h1 span { color:var(--accent); }
+    .pill { background:var(--surface); border:1px solid var(--border); padding:6px 14px; border-radius:20px; font-size:0.8rem; color:var(--muted); }
+    .pill b { color:var(--text); }
 
     /* ── AIRPORT BAR ── */
-    .airport-bar {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 24px;
-      display: flex; align-items: center; gap: 16px;
-      margin-bottom: 28px; flex-wrap: wrap;
-    }
-    .ap { display: flex; flex-direction: column; gap: 2px; }
-    .ap-code { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
-    .ap-name { font-size: 0.78rem; color: var(--muted); max-width: 200px; }
-    .flight-icon { flex: 1; text-align: center; font-size: 1.5rem; color: var(--accent2); }
+    .airport-bar { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 24px; display:flex; align-items:center; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
+    .ap { display:flex; flex-direction:column; gap:2px; }
+    .ap-code { font-family:'Syne',sans-serif; font-weight:800; font-size:1.4rem; color:var(--accent); }
+    .ap-name { font-size:0.78rem; color:var(--muted); max-width:200px; }
+    .flight-icon { flex:1; text-align:center; font-size:1.5rem; color:var(--accent2); }
 
     /* ── FILTERS ── */
-    .filter-bar {
-      display: flex; gap: 10px; margin-bottom: 20px;
-      flex-wrap: wrap; align-items: center;
-    }
-    .filter-label { font-size: 0.8rem; color: var(--muted); }
-    .filter-btn {
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--muted); padding: 7px 16px; border-radius: 20px;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem; transition: all 0.2s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent); border-color: var(--accent); color: #fff;
-    }
+    .filter-bar { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; align-items:center; }
+    .filter-label { font-size:0.8rem; color:var(--muted); }
+    .filter-btn { background:var(--surface); border:1px solid var(--border); color:var(--muted); padding:7px 16px; border-radius:20px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.82rem; transition:all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background:var(--accent); border-color:var(--accent); color:#fff; }
 
     /* ── TABLE HEADER ── */
-    .table-header {
-      display: grid;
-      grid-template-columns: 48px 180px 1fr 120px 120px 100px 130px;
-      gap: 16px; padding: 0 24px 10px;
-      font-size: 0.72rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.8px;
-    }
+    .table-header { display:grid; grid-template-columns:48px 180px 1fr 120px 120px 100px 130px; gap:16px; padding:0 24px 10px; font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; }
 
     /* ── MAP SECTION ── */
-    .map-section {
-      display: none;
-      margin-bottom: 20px;
+    .map-section { display:none; margin-bottom:20px; background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; animation:fadeUp 0.3s ease both; }
+    .map-section.visible { display:block; }
+    .map-header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--border); }
+    #mapTitle { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; color:var(--text); }
+    #mapSubtitle { font-size:0.78rem; color:var(--muted); margin-top:3px; }
+    .map-close { background:transparent; border:1px solid var(--border); color:var(--muted); padding:5px 14px; border-radius:6px; cursor:pointer; font-size:0.8rem; transition:all 0.2s; }
+    .map-close:hover { border-color:var(--red); color:var(--red); }
+    #leafletMap { height:420px; width:100%; z-index:1; }
+    .leg-cards { display:flex; gap:10px; padding:16px 20px; flex-wrap:wrap; border-top:1px solid var(--border); }
+    .leg-card { flex:1; min-width:160px; background:var(--surface); border-radius:8px; padding:10px 14px; border-left:3px solid var(--accent); }
+    .leg-card .leg-label { font-size:0.7rem; color:var(--muted); margin-bottom:4px; }
+    .leg-card .leg-route { font-family:'Syne',sans-serif; font-weight:600; font-size:0.88rem; }
+    .leg-card .leg-time { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+
+    /* ── FLIGHT CARDS ── */
+    .flights-list { display:flex; flex-direction:column; gap:12px; }
+    .flight-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 24px; display:grid; grid-template-columns:48px 180px 1fr 120px 120px 100px 130px; align-items:center; gap:16px; cursor:pointer; transition:border-color 0.2s, transform 0.15s; animation:fadeUp 0.3s ease both; }
+    .flight-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+    .flight-card.selected { border-color:var(--accent2) !important; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    {% for i in range(1,61) %}
+    .flight-card:nth-child({{i}}) { animation-delay:{{(i-1)*0.03}}s; }
+    {% endfor %}
+
+    .rank-badge { width:36px; height:36px; border-radius:8px; background:var(--tag-bg); color:var(--accent); font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; display:flex; align-items:center; justify-content:center; }
+    .airline-col .airline-name { font-family:'Syne',sans-serif; font-weight:600; font-size:0.92rem; }
+    .airline-col .flight-no { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+    .airline-col .airplane { font-size:0.7rem; color:var(--muted); margin-top:1px; }
+    .route-col { display:flex; align-items:center; gap:10px; }
+    .route-col .iata { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; }
+    .route-col .route-line { flex:1; height:1px; background:var(--border); position:relative; }
+    .route-col .route-line::after { content:"✈"; position:absolute; top:-9px; left:50%; transform:translateX(-50%); font-size:0.8rem; color:var(--accent2); }
+    .time-col { text-align:center; }
+    .time-col .time { font-family:'Syne',sans-serif; font-weight:600; font-size:1rem; }
+    .time-col .label { font-size:0.7rem; color:var(--muted); margin-top:2px; }
+    .dur-col { text-align:center; }
+    .dur-col .duration { font-size:0.88rem; font-weight:500; }
+    .stops-tag { display:inline-block; margin-top:4px; padding:2px 8px; border-radius:10px; font-size:0.7rem; font-weight:500; }
+    .stops-tag.nonstop { background:#052e16; color:var(--green); }
+    .stops-tag.hasstop { background:#451a03; color:var(--yellow); }
+    .price-col { text-align:right; }
+    .price-col .price { font-family:'Syne',sans-serif; font-weight:800; font-size:1.15rem; color:var(--green); }
+    .price-col .price-check { font-size:0.78rem; color:var(--yellow); }
+    .price-col .price-note { font-size:0.68rem; color:var(--muted); margin-top:2px; }
+
+    /* ════════════════════════════════════════
+       CAB COMPONENT
+    ════════════════════════════════════════ */
+
+    .cab-section {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .cab-section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cab-section-title .cab-icon {
+      width: 34px; height: 34px;
+      background: #1a1040;
+      border: 1px solid #3b2070;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .cab-section-sub {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding-left: 44px;
+    }
+
+    /* Two cab cards side by side */
+    .cab-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .cab-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      animation: fadeUp 0.3s ease both;
+      transition: border-color 0.2s;
     }
-    .map-section.visible { display: block; }
+    .cab-card.active { border-color: var(--purple); }
 
-    .map-header {
-      display: flex; align-items: center;
-      justify-content: space-between;
+    /* Cab card header with toggle */
+    .cab-card-header {
       padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid var(--border);
-    }
-    #mapTitle {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1rem; color: var(--text);
-    }
-    #mapSubtitle { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
-    .map-close {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--muted); padding: 5px 14px; border-radius: 6px;
-      cursor: pointer; font-size: 0.8rem; transition: all 0.2s;
-    }
-    .map-close:hover { border-color: var(--red); color: var(--red); }
-
-    #leafletMap { height: 400px; width: 100%; z-index: 1; }
-
-    /* ── LEG CARDS ── */
-    .leg-cards {
-      display: flex; gap: 10px; padding: 16px 20px;
-      flex-wrap: wrap; border-top: 1px solid var(--border);
-    }
-    .leg-card {
-      flex: 1; min-width: 160px; background: var(--surface);
-      border-radius: 8px; padding: 10px 14px;
-      border-left: 3px solid var(--accent);
-    }
-    .leg-card .leg-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 4px; }
-    .leg-card .leg-route { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; }
-    .leg-card .leg-time  { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-
-    /* ── FLIGHT CARDS ── */
-    .flights-list { display: flex; flex-direction: column; gap: 12px; }
-
-    .flight-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 20px 24px;
-      display: grid;
-      grid-template-columns: 48px 180px 1fr 120px 120px 100px 130px;
-      align-items: center; gap: 16px;
       cursor: pointer;
-      transition: border-color 0.2s, transform 0.15s;
-      animation: fadeUp 0.3s ease both;
+      user-select: none;
     }
-    .flight-card:hover    { border-color: var(--accent); transform: translateY(-2px); }
-    .flight-card.selected { border-color: var(--accent2) !important; }
+    .cab-card-header:hover { background: rgba(255,255,255,0.02); }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .cab-card-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    {% for i in range(1, 61) %}
-    .flight-card:nth-child({{ i }}) { animation-delay: {{ (i-1) * 0.03 }}s; }
-    {% endfor %}
+    .cab-card-label .cb-icon { font-size: 1.2rem; }
+    .cab-card-label .cb-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    .cab-card-label .cb-sub { font-size: 0.73rem; color: var(--muted); margin-top:2px; }
 
-    .rank-badge {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--tag-bg); color: var(--accent);
-      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem;
+    /* Toggle switch */
+    .toggle {
+      width: 44px; height: 24px;
+      background: var(--border);
+      border-radius: 12px;
+      position: relative;
+      transition: background 0.25s;
+      flex-shrink: 0;
+    }
+    .toggle.on { background: var(--purple); }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: transform 0.25s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .toggle.on::after { transform: translateX(20px); }
+
+    /* Cab options body */
+    .cab-body {
+      display: none;
+      padding: 20px;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .cab-body.open { display: flex; }
+
+    /* Route info strip */
+    .cab-route-info {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+    }
+    .cab-route-info .route-txt { color: var(--text); font-weight: 500; }
+    .cab-route-info .dist-txt { color: var(--accent2); font-size: 0.78rem; }
+
+    /* Options row */
+    .cab-options-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .cab-opt-group { display: flex; flex-direction: column; gap: 6px; }
+    .cab-opt-group label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .cab-select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 9px 12px;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .cab-select:focus { border-color: var(--purple); }
+    .cab-select option { background: var(--card); }
+
+    /* Price estimate box */
+    .cab-price-box {
+      background: linear-gradient(135deg, #1a1040 0%, #160d35 100%);
+      border: 1px solid #3b2070;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cab-price-box .price-left .est-label { font-size: 0.7rem; color: #9d7de8; margin-bottom: 2px; }
+    .cab-price-box .price-left .est-price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--purple);
+    }
+    .cab-price-box .price-left .est-sub { font-size: 0.7rem; color: #9d7de8; margin-top: 2px; }
+    .cab-price-box .price-right { text-align: right; }
+    .cab-price-box .price-right .rate-label { font-size: 0.68rem; color: #9d7de8; }
+    .cab-price-box .price-right .rate-val { font-size: 0.85rem; color: #c4a8f5; font-weight: 500; margin-top: 2px; }
+
+    /* Show on map button */
+    .cab-map-btn {
+      background: transparent;
+      border: 1px solid var(--purple);
+      color: var(--purple);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .cab-map-btn:hover { background: var(--purple); color: #fff; }
+    .cab-map-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* Total summary bar */
+    .journey-summary {
+      margin-top: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: none;
+    }
+    .journey-summary.visible { display: block; }
+    .journey-summary-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .journey-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .journey-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .journey-step .step-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
     }
-    .airline-col .airline-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.92rem; }
-    .airline-col .flight-no   { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-    .airline-col .airplane    { font-size: 0.7rem;  color: var(--muted); margin-top: 1px; }
-
-    .route-col { display: flex; align-items: center; gap: 10px; }
-    .route-col .iata { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
-    .route-col .route-line { flex: 1; height: 1px; background: var(--border); position: relative; }
-    .route-col .route-line::after {
-      content: "✈"; position: absolute; top: -9px; left: 50%;
-      transform: translateX(-50%); font-size: 0.8rem; color: var(--accent2);
+    .journey-step .step-icon.cab-icon-s  { background: #1a1040; border: 1px solid var(--purple); }
+    .journey-step .step-icon.flight-icon-s { background: var(--tag-bg); border: 1px solid var(--accent); }
+    .journey-step .step-label { font-size: 0.68rem; color: var(--muted); text-align: center; max-width: 60px; }
+    .journey-connector {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      min-width: 24px;
+      margin-bottom: 20px;
+      position: relative;
     }
+    .journey-connector.cab-line  { background: var(--purple); opacity: 0.5; }
+    .journey-connector.flight-line { background: var(--accent); opacity: 0.5; }
 
-    .time-col { text-align: center; }
-    .time-col .time  { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; }
-    .time-col .label { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
-
-    .dur-col { text-align: center; }
-    .dur-col .duration { font-size: 0.88rem; font-weight: 500; }
-    .stops-tag {
-      display: inline-block; margin-top: 4px;
-      padding: 2px 8px; border-radius: 10px;
-      font-size: 0.7rem; font-weight: 500;
+    .journey-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
-    .stops-tag.nonstop { background: #052e16; color: var(--green); }
-    .stops-tag.hasstop { background: #451a03; color: var(--yellow); }
-
-    .price-col { text-align: right; }
-    .price-col .price      { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--green); }
-    .price-col .price-check { font-size: 0.78rem; color: var(--yellow); }
-    .price-col .price-note  { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+    .journey-total .total-label { font-size: 0.83rem; color: var(--muted); }
+    .journey-total .total-price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--green);
+    }
+    .journey-total .total-note { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
 
     /* ── LEAFLET OVERRIDES ── */
-    .duration-label {
-      background: #0a0e1a;
-      border: 1px solid #3b82f6;
-      color: #3b82f6;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px; font-weight: 500;
-      padding: 3px 10px; border-radius: 4px;
-      white-space: nowrap; width: max-content; display: inline-block;
-    }
-    .airport-label {
-      font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: 12px; color: #e2e8f0;
-      background: #0a0e1a; border-radius: 4px;
-      padding: 2px 8px; white-space: nowrap;
-      width: max-content; display: inline-block;
-    }
-    .leaflet-popup-content-wrapper {
-      background: #161d2e !important; border: 1px solid #1e2d45 !important;
-      color: #e2e8f0 !important; border-radius: 8px !important;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
-    }
-    .leaflet-popup-tip { background: #161d2e !important; }
-    .leaflet-popup-close-button { color: #64748b !important; }
+    .duration-label { background:#0a0e1a; border:1px solid #3b82f6; color:#3b82f6; font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; padding:3px 10px; border-radius:4px; white-space:nowrap; width:max-content; display:inline-block; }
+    .airport-label { font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:#e2e8f0; background:#0a0e1a; border-radius:4px; padding:2px 8px; white-space:nowrap; width:max-content; display:inline-block; }
+    .cab-label { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; color:#c4a8f5; background:#0a0e1a; border:1px solid #a855f7; border-radius:4px; padding:2px 8px; white-space:nowrap; width:max-content; display:inline-block; }
+    .leaflet-popup-content-wrapper { background:#161d2e !important; border:1px solid #1e2d45 !important; color:#e2e8f0 !important; border-radius:8px !important; box-shadow:0 4px 20px rgba(0,0,0,0.5) !important; }
+    .leaflet-popup-tip { background:#161d2e !important; }
+    .leaflet-popup-close-button { color:#64748b !important; }
 
     /* ── EMPTY STATE ── */
-    .empty-state { text-align: center; padding: 80px 20px; color: var(--muted); }
-    .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
-    .empty-state h2 { font-family: 'Syne', sans-serif; color: var(--text); margin-bottom: 8px; }
+    .empty-state { text-align:center; padding:80px 20px; color:var(--muted); }
+    .empty-state .icon { font-size:3rem; margin-bottom:16px; }
+    .empty-state h2 { font-family:'Syne',sans-serif; color:var(--text); margin-bottom:8px; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .flight-card, .table-header { grid-template-columns: 1fr; }
-      .table-header { display: none; }
-      .flight-card { gap: 8px; }
-      .topbar { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+    @media (max-width:900px) {
+      .flight-card, .table-header { grid-template-columns:1fr; }
+      .table-header { display:none; }
+      .flight-card { gap:8px; }
+      .cab-grid { grid-template-columns:1fr; }
+      .topbar { flex-wrap:wrap; gap:8px; padding:12px 16px; }
     }
   </style>
 </head>
@@ -313,12 +427,12 @@
   <!-- FILTERS -->
   <div class="filter-bar">
     <span class="filter-label">Filter:</span>
-    <button class="filter-btn active" onclick="filterFlights('all', this)">All</button>
-    <button class="filter-btn" onclick="filterFlights('nonstop', this)">Non-stop only</button>
-    <button class="filter-btn" onclick="filterFlights('indigo', this)">IndiGo</button>
-    <button class="filter-btn" onclick="filterFlights('airindia', this)">Air India</button>
-    <button class="filter-btn" onclick="filterFlights('akasa', this)">Akasa Air</button>
-    <button class="filter-btn" onclick="filterFlights('spicejet', this)">SpiceJet</button>
+    <button class="filter-btn active" onclick="filterFlights('all',this)">All</button>
+    <button class="filter-btn" onclick="filterFlights('nonstop',this)">Non-stop only</button>
+    <button class="filter-btn" onclick="filterFlights('indigo',this)">IndiGo</button>
+    <button class="filter-btn" onclick="filterFlights('airindia',this)">Air India</button>
+    <button class="filter-btn" onclick="filterFlights('akasa',this)">Akasa Air</button>
+    <button class="filter-btn" onclick="filterFlights('spicejet',this)">SpiceJet</button>
     <span class="filter-label" style="margin-left:12px">Sort:</span>
     <button class="filter-btn" onclick="sortFlights('price')">Price ↑</button>
     <button class="filter-btn" onclick="sortFlights('duration')">Duration ↑</button>
@@ -329,16 +443,12 @@
 
   <!-- TABLE HEADER -->
   <div class="table-header">
-    <div>#</div>
-    <div>Airline</div>
-    <div>Route</div>
-    <div>Departure</div>
-    <div>Arrival</div>
-    <div>Duration</div>
+    <div>#</div><div>Airline</div><div>Route</div>
+    <div>Departure</div><div>Arrival</div><div>Duration</div>
     <div style="text-align:right">Price</div>
   </div>
 
-  <!-- MAP SECTION — shown when a flight card is clicked -->
+  <!-- MAP SECTION -->
   <div class="map-section" id="mapSection">
     <div class="map-header">
       <div>
@@ -355,8 +465,8 @@
   <div class="flights-list" id="flightsList">
     {% for f in flights %}
     <div class="flight-card"
-         onclick="showMap(this, {{ loop.index0 }})"
-         data-airline="{{ f.airline | lower }}"
+         onclick="showMap(this,{{loop.index0}})"
+         data-airline="{{ f.airline|lower }}"
          data-stops="{{ f.stops }}"
          data-price="{{ f.price_raw }}"
          data-departure="{{ f.departure }}"
@@ -389,9 +499,7 @@
 
       <div class="dur-col">
         <div class="duration">{{ f.duration }}</div>
-        <span class="stops-tag {{ 'nonstop' if f.stops == 'Non-stop' else 'hasstop' }}">
-          {{ f.stops }}
-        </span>
+        <span class="stops-tag {{ 'nonstop' if f.stops=='Non-stop' else 'hasstop' }}">{{ f.stops }}</span>
         {% if f.carbon_kg > 0 %}
         <div style="font-size:0.68rem;color:var(--muted);margin-top:4px">{{ f.carbon_kg }}kg CO₂</div>
         {% endif %}
@@ -411,6 +519,144 @@
     {% endfor %}
   </div>
 
+  <!-- ═══════════════════════════════════════
+       CAB COMPONENT
+  ════════════════════════════════════════ -->
+  <div class="cab-section">
+
+    <div class="cab-section-title">
+      <div class="cab-icon">🚖</div>
+      Add Cab to Your Journey
+    </div>
+    <div class="cab-section-sub">
+      Optionally book a cab to/from the airport. Each leg is independent — choose what you need.
+    </div>
+
+    <div class="cab-grid">
+
+      <!-- CAB 1: User city → Source Airport -->
+      <div class="cab-card" id="cabCard1">
+        <div class="cab-card-header" onclick="toggleCab(1)">
+          <div class="cab-card-label">
+            <span class="cb-icon">🏠</span>
+            <div>
+              <div class="cb-title">Pickup to Airport</div>
+              <div class="cb-sub">{{ from_place }} → {{ from_airport.code }}</div>
+            </div>
+          </div>
+          <div class="toggle" id="toggle1"></div>
+        </div>
+        <div class="cab-body" id="cabBody1">
+          <div class="cab-route-info">
+            <span class="route-txt">{{ from_place }} → {{ from_airport.name }}</span>
+            <span class="dist-txt" id="dist1">Calculating...</span>
+          </div>
+          <div class="cab-options-row">
+            <div class="cab-opt-group">
+              <label>Cab Type</label>
+              <select class="cab-select" id="cabType1" onchange="updateCabPrice(1)">
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan" selected>Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="premium">Premium SUV</option>
+              </select>
+            </div>
+            <div class="cab-opt-group">
+              <label>Comfort</label>
+              <select class="cab-select" id="cabAC1" onchange="updateCabPrice(1)">
+                <option value="ac" selected>AC</option>
+                <option value="nonac">Non-AC</option>
+              </select>
+            </div>
+          </div>
+          <div class="cab-price-box" id="cabPriceBox1">
+            <div class="price-left">
+              <div class="est-label">Estimated Fare</div>
+              <div class="est-price" id="cabPrice1">₹ —</div>
+              <div class="est-sub" id="cabPriceSub1">Select options above</div>
+            </div>
+            <div class="price-right">
+              <div class="rate-label">Rate per km</div>
+              <div class="rate-val" id="cabRate1">—</div>
+            </div>
+          </div>
+          <button class="cab-map-btn" onclick="showCabOnMap(1)" id="cabMapBtn1">
+            🗺 Show on Map
+          </button>
+        </div>
+      </div>
+
+      <!-- CAB 2: Destination Airport → User destination -->
+      <div class="cab-card" id="cabCard2">
+        <div class="cab-card-header" onclick="toggleCab(2)">
+          <div class="cab-card-label">
+            <span class="cb-icon">🏁</span>
+            <div>
+              <div class="cb-title">Drop from Airport</div>
+              <div class="cb-sub">{{ to_airport.code }} → {{ to_place }}</div>
+            </div>
+          </div>
+          <div class="toggle" id="toggle2"></div>
+        </div>
+        <div class="cab-body" id="cabBody2">
+          <div class="cab-route-info">
+            <span class="route-txt">{{ to_airport.name }} → {{ to_place }}</span>
+            <span class="dist-txt" id="dist2">Calculating...</span>
+          </div>
+          <div class="cab-options-row">
+            <div class="cab-opt-group">
+              <label>Cab Type</label>
+              <select class="cab-select" id="cabType2" onchange="updateCabPrice(2)">
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan" selected>Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="premium">Premium SUV</option>
+              </select>
+            </div>
+            <div class="cab-opt-group">
+              <label>Comfort</label>
+              <select class="cab-select" id="cabAC2" onchange="updateCabPrice(2)">
+                <option value="ac" selected>AC</option>
+                <option value="nonac">Non-AC</option>
+              </select>
+            </div>
+          </div>
+          <div class="cab-price-box" id="cabPriceBox2">
+            <div class="price-left">
+              <div class="est-label">Estimated Fare</div>
+              <div class="est-price" id="cabPrice2">₹ —</div>
+              <div class="est-sub" id="cabPriceSub2">Select options above</div>
+            </div>
+            <div class="price-right">
+              <div class="rate-label">Rate per km</div>
+              <div class="rate-val" id="cabRate2">—</div>
+            </div>
+          </div>
+          <button class="cab-map-btn" onclick="showCabOnMap(2)" id="cabMapBtn2">
+            🗺 Show on Map
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /cab-grid -->
+
+    <!-- Journey Summary -->
+    <div class="journey-summary" id="journeySummary">
+      <div class="journey-summary-title">🗺 Your Complete Journey</div>
+      <div class="journey-steps" id="journeySteps"></div>
+      <div class="journey-total">
+        <div>
+          <div class="total-label">Estimated Total Cost</div>
+          <div class="total-note" id="totalNote">Flight + selected cab(s)</div>
+        </div>
+        <div style="text-align:right">
+          <div class="total-price" id="totalPrice">₹ —</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cab-section -->
+
   {% else %}
   <div class="empty-state">
     <div class="icon">✈️</div>
@@ -421,144 +667,279 @@
 
 </div><!-- /page-wrap -->
 
-<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 
-/* ── Flask data ────────────────────────────────────────── */
-const FLASK_FLIGHTS = {{ flights | tojson }};
+/* ══════════════════════════════════════════════
+   FLASK DATA
+══════════════════════════════════════════════ */
+const FLASK_FLIGHTS   = {{ flights | tojson }};
+const FROM_PLACE      = {{ from_place | tojson }};
+const TO_PLACE        = {{ to_place   | tojson }};
+const FROM_AIRPORT    = {{ from_airport | tojson }};
+const TO_AIRPORT      = {{ to_airport   | tojson }};
 
-/* ── Airport coordinates ───────────────────────────────── */
+/* ══════════════════════════════════════════════
+   AIRPORT COORDINATES
+══════════════════════════════════════════════ */
 const AIRPORT_COORDS = {
-  DEL: { name:"Delhi",        lat:28.5665, lon:77.1031 },
-  BOM: { name:"Mumbai",       lat:19.0896, lon:72.8656 },
-  BLR: { name:"Bengaluru",    lat:13.1986, lon:77.7066 },
-  MAA: { name:"Chennai",      lat:12.9941, lon:80.1709 },
-  HYD: { name:"Hyderabad",    lat:17.2403, lon:78.4294 },
-  CCU: { name:"Kolkata",      lat:22.6549, lon:88.4467 },
-  AMD: { name:"Ahmedabad",    lat:23.0772, lon:72.6347 },
-  PNQ: { name:"Pune",         lat:18.5822, lon:73.9197 },
-  COK: { name:"Kochi",        lat:10.1520, lon:76.3919 },
-  GOI: { name:"Goa",          lat:15.3808, lon:73.8314 },
-  JAI: { name:"Jaipur",       lat:26.8242, lon:75.8122 },
-  LKO: { name:"Lucknow",      lat:26.7606, lon:80.8893 },
-  BHO: { name:"Bhopal",       lat:23.2875, lon:77.3374 },
-  IDR: { name:"Indore",       lat:22.7218, lon:75.8011 },
-  NAG: { name:"Nagpur",       lat:21.0922, lon:79.0472 },
-  PAT: { name:"Patna",        lat:25.5913, lon:85.0880 },
-  IXC: { name:"Chandigarh",   lat:30.6735, lon:76.7885 },
-  ATQ: { name:"Amritsar",     lat:31.7096, lon:74.7973 },
-  SXR: { name:"Srinagar",     lat:33.9871, lon:74.7742 },
-  GAU: { name:"Guwahati",     lat:26.1061, lon:91.5859 },
-  VNS: { name:"Varanasi",     lat:25.4524, lon:82.8593 },
-  TRV: { name:"Trivandrum",   lat: 8.4821, lon:76.9201 },
-  IXM: { name:"Madurai",      lat: 9.8345, lon:78.0934 },
-  VTZ: { name:"Vizag",        lat:17.7212, lon:83.2245 },
-  BBI: { name:"Bhubaneswar",  lat:20.2444, lon:85.8178 },
-  RPR: { name:"Raipur",       lat:21.1804, lon:81.7388 },
-  IXR: { name:"Ranchi",       lat:23.3143, lon:85.3217 },
-  UDR: { name:"Udaipur",      lat:24.6177, lon:73.8961 },
-  JDH: { name:"Jodhpur",      lat:26.2511, lon:73.0489 },
-  IXB: { name:"Bagdogra",     lat:26.6812, lon:88.3286 },
-  IMF: { name:"Imphal",       lat:24.7600, lon:93.8967 },
-  IXA: { name:"Agartala",     lat:23.8870, lon:91.2404 },
-  DIB: { name:"Dibrugarh",    lat:27.4839, lon:95.0169 },
-  IXL: { name:"Leh",          lat:34.1359, lon:77.5465 },
-  KUU: { name:"Kullu",        lat:31.8767, lon:77.1544 },
-  DHM: { name:"Dharamsala",   lat:32.1651, lon:76.2635 },
+  DEL:{name:"Delhi",        lat:28.5665,lon:77.1031},
+  BOM:{name:"Mumbai",       lat:19.0896,lon:72.8656},
+  BLR:{name:"Bengaluru",    lat:13.1986,lon:77.7066},
+  MAA:{name:"Chennai",      lat:12.9941,lon:80.1709},
+  HYD:{name:"Hyderabad",    lat:17.2403,lon:78.4294},
+  CCU:{name:"Kolkata",      lat:22.6549,lon:88.4467},
+  AMD:{name:"Ahmedabad",    lat:23.0772,lon:72.6347},
+  PNQ:{name:"Pune",         lat:18.5822,lon:73.9197},
+  COK:{name:"Kochi",        lat:10.1520,lon:76.3919},
+  GOI:{name:"Goa",          lat:15.3808,lon:73.8314},
+  JAI:{name:"Jaipur",       lat:26.8242,lon:75.8122},
+  LKO:{name:"Lucknow",      lat:26.7606,lon:80.8893},
+  BHO:{name:"Bhopal",       lat:23.2875,lon:77.3374},
+  IDR:{name:"Indore",       lat:22.7218,lon:75.8011},
+  NAG:{name:"Nagpur",       lat:21.0922,lon:79.0472},
+  PAT:{name:"Patna",        lat:25.5913,lon:85.0880},
+  IXC:{name:"Chandigarh",   lat:30.6735,lon:76.7885},
+  ATQ:{name:"Amritsar",     lat:31.7096,lon:74.7973},
+  SXR:{name:"Srinagar",     lat:33.9871,lon:74.7742},
+  GAU:{name:"Guwahati",     lat:26.1061,lon:91.5859},
+  VNS:{name:"Varanasi",     lat:25.4524,lon:82.8593},
+  TRV:{name:"Trivandrum",   lat: 8.4821,lon:76.9201},
+  IXM:{name:"Madurai",      lat: 9.8345,lon:78.0934},
+  VTZ:{name:"Vizag",        lat:17.7212,lon:83.2245},
+  BBI:{name:"Bhubaneswar",  lat:20.2444,lon:85.8178},
+  RPR:{name:"Raipur",       lat:21.1804,lon:81.7388},
+  IXR:{name:"Ranchi",       lat:23.3143,lon:85.3217},
+  UDR:{name:"Udaipur",      lat:24.6177,lon:73.8961},
+  JDH:{name:"Jodhpur",      lat:26.2511,lon:73.0489},
+  IXB:{name:"Bagdogra",     lat:26.6812,lon:88.3286},
+  IMF:{name:"Imphal",       lat:24.7600,lon:93.8967},
+  IXA:{name:"Agartala",     lat:23.8870,lon:91.2404},
+  DIB:{name:"Dibrugarh",    lat:27.4839,lon:95.0169},
+  IXL:{name:"Leh",          lat:34.1359,lon:77.5465},
+  KUU:{name:"Kullu",        lat:31.8767,lon:77.1544},
+  DHM:{name:"Dharamsala",   lat:32.1651,lon:76.2635},
 };
 
-/* ── Airline colours ───────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   AIRLINE COLOURS
+══════════════════════════════════════════════ */
 const AIRLINE_COLORS = {
-  'air india express': '#f59e0b',
-  'air india':         '#10b981',
-  'indigo':            '#3b82f6',
-  'akasa':             '#ef4444',
-  'spicejet':          '#f97316',
-  'vistara':           '#a855f7',
-  'go first':          '#ec4899',
+  'air india express':'#f59e0b','air india':'#10b981',
+  'indigo':'#3b82f6','akasa':'#ef4444',
+  'spicejet':'#f97316','vistara':'#a855f7','go first':'#ec4899',
 };
-
 function getColor(airline) {
-  const a = (airline || '').toLowerCase();
-  for (const key in AIRLINE_COLORS) {
-    if (a.includes(key)) return AIRLINE_COLORS[key];
-  }
+  const a=(airline||'').toLowerCase();
+  for(const k in AIRLINE_COLORS) if(a.includes(k)) return AIRLINE_COLORS[k];
   return '#06b6d4';
 }
 
-/* ── State ─────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   CAB PRICING TABLE  (₹ per km)
+══════════════════════════════════════════════ */
+const CAB_RATES = {
+  hatchback:{ ac:12, nonac:9  },
+  sedan:    { ac:14, nonac:11 },
+  suv:      { ac:18, nonac:14 },
+  premium:  { ac:24, nonac:24 },  // premium always AC
+};
+const CAB_NAMES = { hatchback:'Hatchback', sedan:'Sedan', suv:'SUV', premium:'Premium SUV' };
+
+/* ══════════════════════════════════════════════
+   HAVERSINE  (km between two lat/lon)
+══════════════════════════════════════════════ */
+function haversine(lat1,lon1,lat2,lon2) {
+  const R=6371, dLat=(lat2-lat1)*Math.PI/180, dLon=(lon2-lon1)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return Math.round(2*R*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+}
+
+/* ══════════════════════════════════════════════
+   CAB STATE
+══════════════════════════════════════════════ */
+const cabState = {
+  1:{ active:false, distKm:0, priceINR:0, type:'sedan', ac:'ac' },
+  2:{ active:false, distKm:0, priceINR:0, type:'sedan', ac:'ac' },
+};
+
+/* Distances using airport coords as proxy for city coords */
+const ap1Coords = AIRPORT_COORDS[FROM_AIRPORT.code] || {lat:FROM_AIRPORT.lat||0, lon:FROM_AIRPORT.lon||0};
+const ap2Coords = AIRPORT_COORDS[TO_AIRPORT.code]   || {lat:TO_AIRPORT.lat||0,   lon:TO_AIRPORT.lon||0};
+
+/* Approx distances (airport to city center is already close) */
+cabState[1].distKm = haversine(ap1Coords.lat, ap1Coords.lon, ap1Coords.lat, ap1Coords.lon) || 15;
+cabState[2].distKm = haversine(ap2Coords.lat, ap2Coords.lon, ap2Coords.lat, ap2Coords.lon) || 20;
+
+/* Better: use fixed city→airport distances from airports.csv lat/lon via FROM_AIRPORT */
+/* We estimate: assume user is in city center, airport is already known */
+cabState[1].distKm = Math.max(10, haversine(
+  FROM_AIRPORT.lat || ap1Coords.lat,
+  FROM_AIRPORT.lon || ap1Coords.lon,
+  ap1Coords.lat, ap1Coords.lon
+) + 15);   /* +15 km buffer for city-to-airport typical distance */
+
+cabState[2].distKm = Math.max(10, haversine(
+  TO_AIRPORT.lat || ap2Coords.lat,
+  TO_AIRPORT.lon || ap2Coords.lon,
+  ap2Coords.lat, ap2Coords.lon
+) + 18);
+
+/* Show distances in UI */
+document.getElementById('dist1').textContent = '~' + cabState[1].distKm + ' km';
+document.getElementById('dist2').textContent = '~' + cabState[2].distKm + ' km';
+
+/* ── Toggle a cab on/off ────────────────────── */
+function toggleCab(n) {
+  const state   = cabState[n];
+  state.active  = !state.active;
+  const toggle  = document.getElementById('toggle'+n);
+  const body    = document.getElementById('cabBody'+n);
+  const card    = document.getElementById('cabCard'+n);
+
+  toggle.classList.toggle('on',   state.active);
+  body.classList.toggle('open',   state.active);
+  card.classList.toggle('active', state.active);
+
+  if(state.active) updateCabPrice(n);
+  updateJourneySummary();
+}
+
+/* ── Recalculate price when options change ──── */
+function updateCabPrice(n) {
+  const type  = document.getElementById('cabType'+n).value;
+  const ac    = document.getElementById('cabAC'+n).value;
+  const dist  = cabState[n].distKm;
+  const rate  = CAB_RATES[type][ac];
+  const price = dist * rate;
+
+  cabState[n].type     = type;
+  cabState[n].ac       = ac;
+  cabState[n].priceINR = price;
+
+  document.getElementById('cabPrice'+n).textContent =
+    '₹ ' + price.toLocaleString('en-IN');
+  document.getElementById('cabPriceSub'+n).textContent =
+    dist + ' km × ₹' + rate + '/km';
+  document.getElementById('cabRate'+n).textContent =
+    '₹' + rate + ' / km';
+
+  updateJourneySummary();
+}
+
+/* ══════════════════════════════════════════════
+   JOURNEY SUMMARY (total cost)
+══════════════════════════════════════════════ */
+let selectedFlightPrice = 0;
+let selectedFlightData  = null;
+
+function updateJourneySummary() {
+  const cab1On = cabState[1].active;
+  const cab2On = cabState[2].active;
+  const summary = document.getElementById('journeySummary');
+
+  if(!cab1On && !cab2On && !selectedFlightData) { summary.classList.remove('visible'); return; }
+  summary.classList.add('visible');
+
+  /* Build journey steps */
+  const steps = document.getElementById('journeySteps');
+  let stepsHTML = '';
+
+  if(cab1On) {
+    stepsHTML += `
+      <div class="journey-step">
+        <div class="step-icon cab-icon-s">🚖</div>
+        <div class="step-label">${FROM_PLACE}<br>→ ${FROM_AIRPORT.code}</div>
+      </div>
+      <div class="journey-connector cab-line"></div>`;
+  }
+
+  stepsHTML += `
+    <div class="journey-step">
+      <div class="step-icon flight-icon-s">🛫</div>
+      <div class="step-label">${FROM_AIRPORT.code}</div>
+    </div>
+    <div class="journey-connector flight-line"></div>
+    <div class="journey-step">
+      <div class="step-icon flight-icon-s">🛬</div>
+      <div class="step-label">${TO_AIRPORT.code}</div>
+    </div>`;
+
+  if(cab2On) {
+    stepsHTML += `
+      <div class="journey-connector cab-line"></div>
+      <div class="journey-step">
+        <div class="step-icon cab-icon-s">🚖</div>
+        <div class="step-label">${TO_AIRPORT.code}<br>→ ${TO_PLACE}</div>
+      </div>`;
+  }
+
+  steps.innerHTML = stepsHTML;
+
+  /* Total price */
+  let total = selectedFlightPrice;
+  let note  = [];
+  if(selectedFlightPrice > 0) note.push('Flight');
+  if(cab1On)  { total += cabState[1].priceINR; note.push('Pickup cab'); }
+  if(cab2On)  { total += cabState[2].priceINR; note.push('Drop cab'); }
+
+  document.getElementById('totalPrice').textContent =
+    total > 0 ? '₹ ' + Math.round(total).toLocaleString('en-IN') : '₹ —';
+  document.getElementById('totalNote').textContent = note.join(' + ');
+}
+
+/* ══════════════════════════════════════════════
+   LEAFLET MAP
+══════════════════════════════════════════════ */
 let leafletMap   = null;
 let selectedCard = null;
+let cabLayers    = { 1:[], 2:[] };
+let flightLayers = [];
 
-/* ── Filter ────────────────────────────────────────────── */
-function filterFlights(type, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.flight-card').forEach(card => {
-    const airline = card.dataset.airline;
-    const stops   = card.dataset.stops;
-    let show = true;
-    if (type === 'nonstop')  show = stops === 'Non-stop';
-    if (type === 'indigo')   show = airline.includes('indigo');
-    if (type === 'airindia') show = airline.includes('air india');
-    if (type === 'akasa')    show = airline.includes('akasa');
-    if (type === 'spicejet') show = airline.includes('spicejet');
-    card.style.display = show ? '' : 'none';
-  });
-}
-
-/* ── Sort ──────────────────────────────────────────────── */
-function sortFlights(by) {
-  const list  = document.getElementById('flightsList');
-  const cards = [...list.querySelectorAll('.flight-card')];
-  cards.sort((a, b) => {
-    if (by === 'price')     return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-    if (by === 'departure') return a.dataset.departure.localeCompare(b.dataset.departure);
-    if (by === 'duration')  return a.dataset.duration.localeCompare(b.dataset.duration);
-    return 0;
-  });
-  cards.forEach(c => list.appendChild(c));
-}
-
-/* ── Arc builder ───────────────────────────────────────── */
-function buildArc(lat1, lon1, lat2, lon2, steps) {
-  const pts = [];
-  for (let i = 0; i <= steps; i++) {
-    const t     = i / steps;
-    const lat   = lat1 + (lat2 - lat1) * t;
-    const lon   = lon1 + (lon2 - lon1) * t;
-    const curve = Math.sin(Math.PI * t) * 1.8;
-    pts.push([lat + curve, lon]);
+function buildArc(lat1,lon1,lat2,lon2,steps) {
+  const pts=[];
+  for(let i=0;i<=steps;i++){
+    const t=i/steps, lat=lat1+(lat2-lat1)*t, lon=lon1+(lon2-lon1)*t;
+    pts.push([lat+Math.sin(Math.PI*t)*1.8, lon]);
   }
   return pts;
 }
 
-/* ── Arrowhead ─────────────────────────────────────────── */
-function addArrow(lat1, lon1, lat2, lon2, color) {
-  const angle = Math.atan2(lon2 - lon1, lat2 - lat1) * (180 / Math.PI);
-  L.marker([lat2, lon2], {
-    icon: L.divIcon({
-      className: '',
-      html: `<div style="
-        width:0;height:0;
-        border-left:5px solid transparent;
-        border-right:5px solid transparent;
-        border-bottom:11px solid ${color};
-        transform:rotate(${angle}deg);
-        transform-origin:center bottom;
-        opacity:0.95;
-      "></div>`,
-      iconAnchor: [5, 6],
-    }),
-    interactive: false,
+function addArrow(lat1,lon1,lat2,lon2,color) {
+  const angle=Math.atan2(lon2-lon1,lat2-lat1)*(180/Math.PI);
+  L.marker([lat2,lon2],{
+    icon:L.divIcon({className:'',
+      html:`<div style="width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:11px solid ${color};transform:rotate(${angle}deg);transform-origin:center bottom;opacity:0.95;"></div>`,
+      iconAnchor:[5,6]}),
+    interactive:false,
   }).addTo(leafletMap);
 }
 
-/* ── showMap — called when a flight card is clicked ─────── */
+function ensureMap() {
+  const section = document.getElementById('mapSection');
+  section.classList.add('visible');
+  if(!leafletMap) {
+    leafletMap = L.map('leafletMap',{zoomControl:true,scrollWheelZoom:false,attributionControl:true});
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
+      subdomains:'abcd', maxZoom:19,
+    }).addTo(leafletMap);
+  }
+}
+
+function clearFlightLayers() {
+  flightLayers.forEach(l=>{ if(leafletMap) leafletMap.removeLayer(l); });
+  flightLayers=[];
+}
+
+function clearCabLayers(n) {
+  (cabLayers[n]||[]).forEach(l=>{ if(leafletMap) leafletMap.removeLayer(l); });
+  cabLayers[n]=[];
+}
+
+/* ── Show flight route on map ───────────────── */
 function showMap(cardEl, idx) {
-  /* Highlight selected card */
-  if (selectedCard) selectedCard.classList.remove('selected');
+  if(selectedCard) selectedCard.classList.remove('selected');
   cardEl.classList.add('selected');
   selectedCard = cardEl;
 
@@ -566,125 +947,168 @@ function showMap(cardEl, idx) {
   const color      = getColor(f.airline);
   const routeParts = f.route.split(' → ');
 
-  /* Update map header */
+  selectedFlightPrice = f.price_raw || 0;
+  selectedFlightData  = f;
+
   document.getElementById('mapTitle').textContent =
     f.airline + '  ·  ' + f.flight_no + '  ·  ' + f.duration;
   document.getElementById('mapSubtitle').textContent =
     routeParts.join(' → ') +
-    (f.stops !== 'Non-stop'
-      ? '  (via ' + routeParts.slice(1, -1).join(', ') + ')'
-      : '  ·  Non-stop');
+    (f.stops!=='Non-stop' ? '  (via '+routeParts.slice(1,-1).join(', ')+')' : '  ·  Non-stop');
 
-  /* Show section before Leaflet init so it can measure height */
-  const section = document.getElementById('mapSection');
-  section.classList.add('visible');
+  ensureMap();
+  clearFlightLayers();
 
-  /* Destroy previous map instance */
-  if (leafletMap !== null) { leafletMap.remove(); leafletMap = null; }
+  const bounds=[];
 
-  /* Init Leaflet with dark CartoDB tiles */
-  leafletMap = L.map('leafletMap', {
-    zoomControl: true, scrollWheelZoom: false, attributionControl: true,
-  });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19,
-  }).addTo(leafletMap);
-
-  const bounds = [];
-
-  /* Draw each leg */
-  for (let i = 0; i < routeParts.length - 1; i++) {
-    const ap1 = AIRPORT_COORDS[routeParts[i]];
-    const ap2 = AIRPORT_COORDS[routeParts[i + 1]];
-    if (!ap1 || !ap2) continue;
-
-    bounds.push([ap1.lat, ap1.lon], [ap2.lat, ap2.lon]);
-
-    const arc = buildArc(ap1.lat, ap1.lon, ap2.lat, ap2.lon, 60);
-    L.polyline(arc, { color, weight: 3, opacity: 0.9, dashArray: '8, 5' }).addTo(leafletMap);
-    addArrow(ap1.lat, ap1.lon, ap2.lat, ap2.lon, color);
-
-    /* Duration label at arc midpoint */
-    const mid = arc[Math.floor(arc.length / 2)];
-    L.marker(mid, {
-      icon: L.divIcon({
-        className: '',
-        html: `<div class="duration-label" style="border-color:${color};color:${color};">✈ ${f.duration}</div>`,
-        iconAnchor: [0, 0],
-      }),
-      interactive: false,
-      zIndexOffset: 500,
+  for(let i=0;i<routeParts.length-1;i++){
+    const ap1=AIRPORT_COORDS[routeParts[i]], ap2=AIRPORT_COORDS[routeParts[i+1]];
+    if(!ap1||!ap2) continue;
+    bounds.push([ap1.lat,ap1.lon],[ap2.lat,ap2.lon]);
+    const arc=buildArc(ap1.lat,ap1.lon,ap2.lat,ap2.lon,60);
+    const poly=L.polyline(arc,{color,weight:3,opacity:0.9,dashArray:'8,5'}).addTo(leafletMap);
+    flightLayers.push(poly);
+    addArrow(ap1.lat,ap1.lon,ap2.lat,ap2.lon,color);
+    const mid=arc[Math.floor(arc.length/2)];
+    const durMarker=L.marker(mid,{
+      icon:L.divIcon({className:'',html:`<div class="duration-label" style="border-color:${color};color:${color};">✈ ${f.duration}</div>`,iconAnchor:[0,0]}),
+      interactive:false, zIndexOffset:500,
     }).addTo(leafletMap);
+    flightLayers.push(durMarker);
   }
 
-  /* Airport markers + labels */
-  routeParts.forEach((code, i) => {
-    const ap     = AIRPORT_COORDS[code];
-    if (!ap) return;
-    const isStop = i > 0 && i < routeParts.length - 1;
-
-    const dot = L.circleMarker([ap.lat, ap.lon], {
-      radius: isStop ? 7 : 10, fillColor: color,
-      color: '#0a0e1a', weight: 3, fillOpacity: 1,
+  routeParts.forEach((code,i)=>{
+    const ap=AIRPORT_COORDS[code]; if(!ap) return;
+    const isStop=i>0&&i<routeParts.length-1;
+    const dot=L.circleMarker([ap.lat,ap.lon],{radius:isStop?7:10,fillColor:color,color:'#0a0e1a',weight:3,fillOpacity:1}).addTo(leafletMap);
+    const timeInfo=isStop?'Layover stop':i===0?'Departs: '+f.departure:'Arrives: '+f.arrival;
+    dot.bindPopup(`<div style="font-family:'DM Sans',sans-serif;min-width:140px;"><div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:${color};">${code}</div><div style="font-size:0.82rem;margin-top:2px;color:#94a3b8;">${ap.name} Airport</div><div style="margin-top:6px;font-size:0.8rem;color:#e2e8f0;">${timeInfo}</div>${isStop?'<div style="margin-top:6px;display:inline-block;background:rgba(245,158,11,0.15);padding:2px 8px;border-radius:4px;font-size:0.72rem;color:#f59e0b;">Layover</div>':''}</div>`);
+    flightLayers.push(dot);
+    const lbl=L.marker([ap.lat,ap.lon],{
+      icon:L.divIcon({className:'',html:`<div class="airport-label" style="border:1px solid ${color};">${code}</div>`,iconAnchor:[0,32]}),
+      interactive:false, zIndexOffset:1000,
     }).addTo(leafletMap);
-
-    const timeInfo = isStop ? 'Layover stop'
-      : i === 0 ? 'Departs: ' + f.departure : 'Arrives: ' + f.arrival;
-
-    dot.bindPopup(`
-      <div style="font-family:'DM Sans',sans-serif;min-width:140px;">
-        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:${color};">${code}</div>
-        <div style="font-size:0.82rem;margin-top:2px;color:#94a3b8;">${ap.name} Airport</div>
-        <div style="margin-top:6px;font-size:0.8rem;color:#e2e8f0;">${timeInfo}</div>
-        ${isStop ? `<div style="margin-top:6px;display:inline-block;background:rgba(245,158,11,0.15);padding:2px 8px;border-radius:4px;font-size:0.72rem;color:#f59e0b;">Layover</div>` : ''}
-      </div>
-    `);
-
-    /* IATA label above dot */
-    L.marker([ap.lat, ap.lon], {
-      icon: L.divIcon({
-        className: '',
-        html: `<div class="airport-label" style="border:1px solid ${color};">${code}</div>`,
-        iconAnchor: [0, 32],
-      }),
-      interactive: false,
-      zIndexOffset: 1000,
-    }).addTo(leafletMap);
+    flightLayers.push(lbl);
+    bounds.push([ap.lat,ap.lon]);
   });
 
-  /* Fit bounds */
-  if (bounds.length) leafletMap.fitBounds(bounds, { padding: [55, 55] });
+  if(bounds.length) leafletMap.fitBounds(bounds,{padding:[55,55]});
 
-  /* Leg info cards */
-  document.getElementById('legCards').innerHTML =
-    routeParts.slice(0, -1).map((from, i) => {
-      const to     = routeParts[i + 1];
-      const depStr = i === 0 ? f.departure : '—';
-      const arrStr = i === routeParts.length - 2 ? f.arrival : '—';
-      return `
-        <div class="leg-card" style="border-left-color:${color}">
-          <div class="leg-label">Leg ${i + 1}  ·  ${f.duration}</div>
-          <div class="leg-route">${from} → ${to}</div>
-          <div class="leg-time">${depStr} → ${arrStr}</div>
-        </div>`;
-    }).join('') +
-    `<div class="leg-card" style="border-left-color:${color};text-align:right;">
-      <div class="leg-label">${f.airline}  ·  ${f.flight_no}</div>
-      <div class="leg-route" style="color:${color};">${f.price}</div>
-      <div class="leg-time">${f.stops}</div>
-    </div>`;
+  /* Leg cards */
+  document.getElementById('legCards').innerHTML=
+    routeParts.slice(0,-1).map((from,i)=>{
+      const to=routeParts[i+1];
+      const dep=i===0?f.departure:'—', arr=i===routeParts.length-2?f.arrival:'—';
+      return `<div class="leg-card" style="border-left-color:${color}"><div class="leg-label">Leg ${i+1}  ·  ${f.duration}</div><div class="leg-route">${from} → ${to}</div><div class="leg-time">${dep} → ${arr}</div></div>`;
+    }).join('')+
+    `<div class="leg-card" style="border-left-color:${color};text-align:right;"><div class="leg-label">${f.airline}  ·  ${f.flight_no}</div><div class="leg-route" style="color:${color};">${f.price}</div><div class="leg-time">${f.stops}</div></div>`;
 
-  /* Scroll into view */
-  section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  document.getElementById('mapSection').scrollIntoView({behavior:'smooth',block:'nearest'});
+  updateJourneySummary();
 }
 
-/* ── Close map ─────────────────────────────────────────── */
+/* ── Show cab route on map ──────────────────── */
+function showCabOnMap(n) {
+  ensureMap();
+  clearCabLayers(n);
+
+  const CAB_COLOR = '#a855f7';
+  const isPickup  = n===1;
+
+  /* Cab 1: from_place → from_airport */
+  /* Cab 2: to_airport → to_place     */
+  /* We use airport coords for both ends since we don't have exact city coords */
+  /* For city point we offset slightly to simulate city center */
+
+  const ap = isPickup ? AIRPORT_COORDS[FROM_AIRPORT.code] : AIRPORT_COORDS[TO_AIRPORT.code];
+  if(!ap) { alert('Airport coordinates not found.'); return; }
+
+  /* City point: slightly offset from airport (represents city center direction) */
+  const cityLat = isPickup ? ap.lat + 0.18 : ap.lat - 0.18;
+  const cityLon = isPickup ? ap.lon - 0.10 : ap.lon + 0.10;
+
+  const ptA = isPickup ? [cityLat, cityLon]  : [ap.lat, ap.lon];
+  const ptB = isPickup ? [ap.lat,  ap.lon]   : [cityLat, cityLon];
+
+  /* Straight dashed line for cab (road, not arc) */
+  const cabLine = L.polyline([ptA, ptB], {
+    color: CAB_COLOR, weight: 3, opacity: 0.85, dashArray: '4, 6',
+  }).addTo(leafletMap);
+  cabLayers[n].push(cabLine);
+
+  /* City marker */
+  const cityMarker = L.circleMarker(ptA, {
+    radius:8, fillColor:CAB_COLOR, color:'#0a0e1a', weight:2, fillOpacity:0.9,
+  }).addTo(leafletMap);
+  cityMarker.bindPopup(`<div style="font-family:'DM Sans',sans-serif;color:#e2e8f0;min-width:120px;"><div style="color:#a855f7;font-weight:700;">${isPickup?FROM_PLACE:TO_PLACE}</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:2px;">City pickup/drop point</div></div>`);
+  cabLayers[n].push(cityMarker);
+
+  /* Distance label at midpoint */
+  const midLat=(ptA[0]+ptB[0])/2, midLon=(ptA[1]+ptB[1])/2;
+  const distLabel = L.marker([midLat,midLon],{
+    icon:L.divIcon({className:'',
+      html:`<div class="cab-label">🚖 ~${cabState[n].distKm} km</div>`,
+      iconAnchor:[0,0]}),
+    interactive:false, zIndexOffset:600,
+  }).addTo(leafletMap);
+  cabLayers[n].push(distLabel);
+
+  /* Airport marker for cab end */
+  const apMarker = L.circleMarker(ptB, {
+    radius:8, fillColor:CAB_COLOR, color:'#0a0e1a', weight:2, fillOpacity:0.9,
+  }).addTo(leafletMap);
+  const apCode = isPickup?FROM_AIRPORT.code:TO_AIRPORT.code;
+  apMarker.bindPopup(`<div style="font-family:'DM Sans',sans-serif;color:#e2e8f0;min-width:120px;"><div style="color:#a855f7;font-weight:700;">${apCode} Airport</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:2px;">${isPickup?'Cab drop-off':'Cab pickup'}</div></div>`);
+  cabLayers[n].push(apMarker);
+
+  /* Fit bounds to include cab route */
+  const allPts = [ptA, ptB];
+  flightLayers.forEach(l=>{ if(l.getLatLng) allPts.push([l.getLatLng().lat, l.getLatLng().lng]); });
+  leafletMap.fitBounds(allPts, {padding:[40,40]});
+
+  document.getElementById('mapSection').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ── Close map ──────────────────────────────── */
 function closeMap() {
   document.getElementById('mapSection').classList.remove('visible');
-  if (selectedCard) { selectedCard.classList.remove('selected'); selectedCard = null; }
-  if (leafletMap)   { leafletMap.remove(); leafletMap = null; }
+  if(selectedCard){ selectedCard.classList.remove('selected'); selectedCard=null; }
+  if(leafletMap){ leafletMap.remove(); leafletMap=null; flightLayers=[]; cabLayers={1:[],2:[]}; }
 }
+
+/* ══════════════════════════════════════════════
+   FILTER & SORT
+══════════════════════════════════════════════ */
+function filterFlights(type,btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.flight-card').forEach(card=>{
+    const airline=card.dataset.airline, stops=card.dataset.stops;
+    let show=true;
+    if(type==='nonstop')  show=stops==='Non-stop';
+    if(type==='indigo')   show=airline.includes('indigo');
+    if(type==='airindia') show=airline.includes('air india');
+    if(type==='akasa')    show=airline.includes('akasa');
+    if(type==='spicejet') show=airline.includes('spicejet');
+    card.style.display=show?'':'none';
+  });
+}
+
+function sortFlights(by) {
+  const list=document.getElementById('flightsList');
+  const cards=[...list.querySelectorAll('.flight-card')];
+  cards.sort((a,b)=>{
+    if(by==='price')     return parseInt(a.dataset.price)-parseInt(b.dataset.price);
+    if(by==='departure') return a.dataset.departure.localeCompare(b.dataset.departure);
+    if(by==='duration')  return a.dataset.duration.localeCompare(b.dataset.duration);
+    return 0;
+  });
+  cards.forEach(c=>list.appendChild(c));
+}
+
+/* Init cab price displays */
+updateCabPrice(1);
+updateCabPrice(2);
 
 </script>
 </body>
